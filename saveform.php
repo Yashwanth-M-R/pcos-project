@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $bpm = mysqli_real_escape_string($link, trim($_POST['bpm']));
         $breathminute = mysqli_real_escape_string($link, trim($_POST['breathminute']));
         
-        $stat = shell_exec('C:\xampp\htdocs\api\process.py');
+        $stat = shell_exec('/opt/lampp/htdocs/api/process.py');
         $result = $stat;
 
         $user = mysqli_real_escape_string($link, trim($_SESSION['user']));
