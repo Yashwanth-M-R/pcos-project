@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             $_SESSION["username"] = $row["name"];
             $_SESSION["userage"] = $row["age"];
             $_SESSION["usergender"] = $row["gender"];
-            echo "<script> location.replace('http://intrella.in/pcos/dashboard.php') </script>";
+            echo "<script> location.replace('http://20.244.4.205/api/dashboard.php') </script>";
         } 
         else 
         {
