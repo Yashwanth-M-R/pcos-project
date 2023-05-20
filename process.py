@@ -46,7 +46,7 @@ X_train,X_test,Y_train,Y_test = train_test_split(predictors,target,test_size=0.2
 # sv.fit(X_train, Y_train)
 # print("trained completely")
 
-filename = "pcos_svm_model.pickel"
+filename = "pcos_svm_model.pickle"
 sv = pickle.load(open(filename, "rb"))
 
 Y_pred_svm = sv.predict(X_test)
