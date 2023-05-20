@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 
-import os
+import sys
 
-dataset = pd.read_csv("pcos_2023_form.csv")
+# dataset = pd.read_csv("pcos_2023_form.csv")
 # print(dataset)
 
 # print(type(dataset))
@@ -27,12 +27,12 @@ dataset = pd.read_csv("pcos_2023_form.csv")
 # print(dataset["breathminute"].unique())
 # print(dataset["excerciseregular"].unique())
 # print(dataset["bmi"].unique())
-from sklearn.model_selection import train_test_split
+# from sklearn.model_selection import train_test_split
 
-predictors = dataset.drop("status",axis=1)
-target = dataset["status"]
+# predictors = dataset.drop(["id", "status"],axis=1)
+# target = dataset["status"]
 
-X_train,X_test,Y_train,Y_test = train_test_split(predictors,target,test_size=0.20,random_state=0)
+# X_train,X_test,Y_train,Y_test = train_test_split(predictors,target,test_size=0.20,random_state=0)
 # print(X_train.shape)
 # print(X_test.shape)
 # print(Y_train.shape)
@@ -46,9 +46,16 @@ X_train,X_test,Y_train,Y_test = train_test_split(predictors,target,test_size=0.2
 # sv.fit(X_train, Y_train)
 # print("trained completely")
 
+X_form = []
+for i in sys.argv[1:]:
+    X_form.append(float(i)  if '.' in i else int(i))
+
+# print(X_test)
+# X_form = X_test.iloc[1].values
+# print(X_form)
+
 filename = "pcos_svm_model.pickle"
 sv = pickle.load(open(filename, "rb"))
 
-Y_pred_svm = sv.predict(X_test)
-print(Y_pred_svm.shape) 
-print("predicted completely")
+Y_pred_svm = sv.predict([X_form])
+print(Y_pred_svm)
